@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="mb-4">Painel de Produtos</h2>
+
+    <form method="GET" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="busca" class="form-control" placeholder="Buscar produto...">
+        <button class="btn btn-primary">Buscar</button>
+    </div>
+
+</form>
+
+
+    <table class="table table-striped table-hover align-middle shadow">
+        <thead class="table-dark">
+            <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th class="text-center">Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+           {% for p in produtos %}
+
+<div class="card mb-3 p-3">
+
+    <div class="row align-items-center">
+        
+        <div class="col-md-2">
+            {% if p.imagem %}
+                <img src="{{ url_for('static', filename='imagens/' + p.imagem) }}" 
+                     class="img-fluid rounded">
+            {% else %}
+                <img src="{{ url_for('static', filename='imagens/placeholder.png') }}" 
+                     class="img-fluid rounded">
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+            <h5>{{ p.nome }}</h5>
+            <p>{{ p.descricao }}</p>
+            <p class="fw-bold text-success">
+            R$ {{ "%.2f"|format(p.preco) }}
+        </p>
+        </div>
+
+        <div class="col-md-4 text-end">
+            <a href="/editar/{{ p.id }}" class="btn btn-warning mb-2">✏️ Editar</a><br>
+            <a href="/deletar/{{ p.id }}" class="btn btn-danger"
+               onclick="return confirm('Tem certeza?')">🗑️ Deletar</a>
+        </div>
+
+    </div>
+
+</div>
+{% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}

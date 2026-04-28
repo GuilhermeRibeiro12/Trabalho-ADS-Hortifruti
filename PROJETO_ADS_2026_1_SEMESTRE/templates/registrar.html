@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+
+    <h3 class="text-center mb-3">Criar Conta</h3>
+
+    <form method="POST">
+        <input name="usuario" class="form-control mb-2" placeholder="Usuário" required>
+        <input type="password" name="senha" class="form-control mb-3" placeholder="Senha" required>
+
+        <button class="btn btn-success w-100">Registrar</button>
+    </form>
+
+</div>
+{% endblock %}

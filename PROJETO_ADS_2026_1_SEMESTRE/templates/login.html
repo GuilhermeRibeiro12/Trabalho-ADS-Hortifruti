@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+
+    <h3 class="mb-3 text-center">Login Admin</h3>
+
+    <form method="POST">
+        <input name="usuario" placeholder="Usuário" class="form-control mb-2" required>
+        <input type="password" name="senha" placeholder="Senha" class="form-control mb-3" required>
+
+        <button class="btn btn-dark w-100">Entrar</button>
+    </form>
+
+</div>
+{% endblock %}

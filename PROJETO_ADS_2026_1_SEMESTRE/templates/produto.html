@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{%block content %}
+<div class="col-md-4 mb-4">
+    <div class="card h-100 shadow">
+
+     <img src="{{ url_for('static', filename='uploads/' + produto.imagem) }}"
+     class="card-img-top"
+     style="height: 220px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ produto.nome }}</h5>
+            <p class="card-text">{{ produto.descricao }}</p>
+
+            <div class="mt-auto">
+                <p class="fw-bold text-success">R$ {{ "%.2f"|format(produto.preco) }}</p>
+                <a href="/editar/{{ produto.id }}" class="btn btn-warning btn-sm">Editar</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <!--Botão whatsapp-->
+<a 
+href="https://wa.me/5511959589388?" 
+class="btn btn-success">
+Comprar via WhatsApp
+</a>
+</div>
+{{% endblock %}}

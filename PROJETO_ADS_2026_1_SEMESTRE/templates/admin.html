@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Cadastrar Produto</h2>
+<div>
+    <a href="/" class="btn btn-secondary">Home</a>
+
+    <a href="/admin/produtos" class="btn btn-primary"> Ver produtos   
+    </a>
+</div>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input name="nome" placeholder="Nome" class="form-control mb-2">
+
+        <textarea name="descricao" placeholder="Descrição" class="form-control mb-2"></textarea>
+
+        <input name="preco" placeholder="Preço" class="form-control mb-2">
+
+        <input type="file" name="imagem" class="form-control mb-2">
+
+        <button class="btn btn-success">Cadastrar</button>
+    </form>
+</div>
+{% endblock %}
