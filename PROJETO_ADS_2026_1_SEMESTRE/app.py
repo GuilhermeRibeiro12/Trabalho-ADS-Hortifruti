@@ -87,9 +87,17 @@ def admin_obrigatorio(f):
 # =========================
 @app.route("/")
 def index():
-    produtos = Produto.query.all()
-    print(session)
-    return render_template("index.html", produtos=produtos)
+    q = request.args.get('q', '')
+    page = request.args.get('page', 1, type=int)
+    per_page = 20
+    
+    query = Produto.query
+    if q:
+        query = query.filter(Produto.nome.contains(q))
+    
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False)
+    produtos = pagination.items
+    return render_template("index.html", produtos=produtos, pagination=pagination, q=q)
 
 
 @app.route("/produto/<int:id>")
